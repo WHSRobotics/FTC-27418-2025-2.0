@@ -1,0 +1,29 @@
+# Written by: Christopher Gholmieh
+# Files:
+
+# Gradle:
+.gradle/
+
+# Build:
+build/
+
+# Class:
+*.class
+
+# Jar:
+*.jar
+
+# WAR:
+*.war
+
+# EAR:
+*.ear
+
+# IDE:
+.idea/
+
+# IML:
+*.iml
+
+# Logs:
+*.log
