@@ -3,8 +3,9 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Mecanum;
 
 // Imports:
-import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
 import org.firstinspires.ftc.teamcode.Constants.Subsystem.Subsystem;
+import org.firstinspires.ftc.teamcode.Constants.Odometry.Odometry;
+import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
 import org.firstinspires.ftc.teamcode.Extensions.IMUEx.IMUEx;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -17,10 +18,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class Mecanum implements Subsystem {
     // Variables (Declaration):
     public DcMotor front_right, front_left, back_right, back_left;
+    public Odometry odometry;
     public IMUEx imu;
 
     // Variables (Assignment):
-    private double deadzone = 0.1;
+    private final double deadzone = 0.1;
 
     // Constructor:
     public Mecanum(HardwareMap hardware_map) {
@@ -30,6 +32,8 @@ public class Mecanum implements Subsystem {
 
         back_right = hardware_map.get(DcMotor.class, "back-right");
         back_left = hardware_map.get(DcMotor.class, "back-left");
+
+        odometry = new Odometry();
 
         imu = new IMUEx(
             // Hardware:
@@ -65,7 +69,7 @@ public class Mecanum implements Subsystem {
     /**
      *
      * @param value The actual input of the joystick.
-     * @param deadzone The deadzone, or the minimum value that the joystick must surpass to be considered.
+     *
      * @return The value after the deadzone has been applied.
      */
     public double apply_deadzone(double value) {
@@ -88,6 +92,18 @@ public class Mecanum implements Subsystem {
         if (channel.gamepad_one_options) {
             imu.reset();
         }
+
+        odometry.update_odometry(
+            // Motors:
+            front_right,
+            front_left,
+
+            back_right,
+            back_left,
+
+            // IMU:
+            imu
+        );
 
         // Variables (Assignment):
         double bottom_heading = imu.get_heading_yaw();

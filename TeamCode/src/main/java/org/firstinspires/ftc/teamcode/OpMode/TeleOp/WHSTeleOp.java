@@ -42,6 +42,14 @@ public class WHSTeleOp extends OpModeEx  {
 
         telemetryPro.addData("gamepad-two-options", channel.gamepad_two_options);
 
+        // Odometry:
+        double[] odometry_values = implementation.mecanum.odometry.get_odometry_values();
+
+        telemetryPro.addData("odometry-x", odometry_values[0]);
+        telemetryPro.addData("odometry-y", odometry_values[1]);
+
+        telemetryPro.addData("odometry-heading", odometry_values[2]);
+
         // Logic:
         telemetryPro.update();
     }
