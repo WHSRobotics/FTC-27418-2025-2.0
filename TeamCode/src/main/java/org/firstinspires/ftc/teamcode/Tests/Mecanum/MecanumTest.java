@@ -1,27 +1,22 @@
 // Written by: Christopher Gholmieh
 // Package:
-package org.firstinspires.ftc.teamcode.OpMode.TeleOp;
+package org.firstinspires.ftc.teamcode.Tests.Mecanum;
 
 // Imports:
 import org.firstinspires.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
-import org.firstinspires.ftc.teamcode.Subsystems.Implementation;
+import org.firstinspires.ftc.teamcode.Subsystems.Mecanum.Mecanum;
 import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
 // Class:
-public class WHSTeleOp extends OpModeEx  {
+@TeleOp(name = "27418-mecanum-test", group = "27418")
+public class MecanumTest extends OpModeEx {
     // Variables (Declaration):
-    // Implementation:
-    public Implementation implementation;
-
-    // Channel:
     public Channel channel;
+    public Mecanum mecanum;
 
     // Methods:
-    /**
-     * 
-     * @param channel The channel class that contains the data that will be recorded.
-     */
     public void record_telemetry(Channel channel) {
         // Telemetry:
         // Gamepad (One):
@@ -49,24 +44,24 @@ public class WHSTeleOp extends OpModeEx  {
     // Initialization:
     @Override
     public void initInternal() {
-        // Variables (Assignment):
-        // Implementation:
-        implementation = new Implementation(hardwareMap);
-
+        // Variables (Definition):
         // Channel:
         channel = new Channel(gamepad1, gamepad2);
+
+        // Mecanum:
+        mecanum = new Mecanum(hardwareMap);
     }
 
     // Loop:
     @Override
-    public void loopInternal() {
+    protected void loopInternal() {
         // Channel:
         channel.update(gamepad1, gamepad2);
 
         // Telemetry:
         record_telemetry(channel);
 
-        // Implementation:
-        implementation.update(channel);
+        // Mecanum:
+        mecanum.update(channel);
     }
 }
