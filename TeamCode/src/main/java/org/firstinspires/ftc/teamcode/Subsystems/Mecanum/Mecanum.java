@@ -78,7 +78,6 @@ public class Mecanum implements Subsystem {
     }
 
     // Methods:
-
     /**
      *
      * @param value The actual input of the joystick.
