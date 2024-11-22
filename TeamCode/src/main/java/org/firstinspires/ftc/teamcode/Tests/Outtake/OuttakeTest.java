@@ -1,4 +1,7 @@
+// Written by: Christopher Gholmieh
+// Package:
 package org.firstinspires.ftc.teamcode.Tests.Outtake;
 
-public class OuttakeTest {
-}
+
+// Class:
+public class OuttakeTest {}
