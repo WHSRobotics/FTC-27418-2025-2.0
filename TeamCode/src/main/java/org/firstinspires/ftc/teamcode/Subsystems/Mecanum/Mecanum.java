@@ -62,6 +62,19 @@ public class Mecanum implements Subsystem {
 
         back_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         back_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        // Odometry:
+        front_right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        front_left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        back_right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        back_left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        front_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        front_left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        back_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        back_left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     // Methods:
@@ -78,7 +91,7 @@ public class Mecanum implements Subsystem {
             return 0;
         }
 
-        return value;
+        return Math.signum(value) * ((Math.abs(value) - deadzone) / (1 - deadzone));
     }
 
     @Override
