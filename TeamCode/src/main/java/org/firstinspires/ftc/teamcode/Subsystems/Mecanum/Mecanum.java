@@ -19,6 +19,9 @@ public class Mecanum implements Subsystem {
     public DcMotor front_right, front_left, back_right, back_left;
     public IMUEx imu;
 
+    // Variables (Assignment):
+    private double deadzone = 0.1;
+
     // Constructor:
     public Mecanum(HardwareMap hardware_map) {
         // Variables (Definition):
@@ -58,12 +61,28 @@ public class Mecanum implements Subsystem {
     }
 
     // Methods:
+
+    /**
+     *
+     * @param value The actual input of the joystick.
+     * @param deadzone The deadzone, or the minimum value that the joystick must surpass to be considered.
+     * @return The value after the deadzone has been applied.
+     */
+    public double apply_deadzone(double value) {
+        // Logic:
+        if (Math.abs(value) < deadzone) {
+            return 0;
+        }
+
+        return value;
+    }
+
     @Override
     public void update(Channel channel) {
         // Variables (Assignment):
-        double gamepad_one_right_stick_x = (channel.gamepad_one_right_stick_x);
-        double gamepad_one_left_stick_x = (channel.gamepad_one_left_stick_x);
-        double gamepad_one_left_stick_y = (-channel.gamepad_one_left_stick_y);
+        double gamepad_one_right_stick_x = apply_deadzone(channel.gamepad_one_right_stick_x);
+        double gamepad_one_left_stick_x = apply_deadzone(channel.gamepad_one_left_stick_x);
+        double gamepad_one_left_stick_y = apply_deadzone(-channel.gamepad_one_left_stick_y);
 
         // Logic:
         if (channel.gamepad_one_options) {
