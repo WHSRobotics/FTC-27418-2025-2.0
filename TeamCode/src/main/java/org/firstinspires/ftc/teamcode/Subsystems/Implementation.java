@@ -5,6 +5,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 // Imports:
 import org.firstinspires.ftc.teamcode.Subsystems.Mecanum.Mecanum;
 import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.Intake;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
@@ -13,10 +14,12 @@ public class Implementation {
     // Variables (Declaration):
     private static Implementation singleton_instance;
     public Mecanum mecanum;
+    public Intake intake;
 
     // Constructor:
     public Implementation(HardwareMap hardware_map) {
         mecanum = new Mecanum(hardware_map);
+        intake = new Intake(hardware_map);
     }
 
     public Implementation() {}
@@ -39,6 +42,11 @@ public class Implementation {
     }
 
     public void update(Channel channel) {
+        // Updates:
+        // Mecanum:
         mecanum.update(channel);
+
+        // Intake:
+        intake.update(channel);
     }
 }
