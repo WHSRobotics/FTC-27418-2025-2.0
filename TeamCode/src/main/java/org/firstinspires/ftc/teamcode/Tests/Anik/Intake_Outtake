@@ -21,10 +21,10 @@ public class intake_outtake extends OpModeEx {
         @Override
         public void initInternal() {
             // Hardware Map
-            leftVerticalLinearSlides = hardwareMap.get(DcMotor.class, "left vertical linear slides");
-            rightVerticalLinearSlides = hardwareMap.get(DcMotor.class, "right vertical linear slides");
-            leftHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "left horizontal linear slides");
-            rightHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "right horizontal linear slides");
+            leftVerticalLinearSlides = hardwareMap.get(DcMotor.class, "left vls");
+            rightVerticalLinearSlides = hardwareMap.get(DcMotor.class, "right vls");
+            leftHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "left hls");
+            rightHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "right hls");
         }
 
         @Override
