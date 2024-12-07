@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 // Class:
@@ -16,15 +17,39 @@ public class Intake implements Subsystem {
     protected DcMotor horizontal_slide_right;
     protected DcMotor horizontal_slide_left;
 
+    protected Servo intake_claw;
+
     // Variables (Assignment):
-    private final double conversion = 0.25;
+    protected final double conversion = 0.25;
     protected double power = 0.0;
+
+    protected Positions claw_position = Positions.CLAW_OPEN_POSITION;
+
+    // Enumerations:
+    public enum Positions {
+        // Enumerations:
+        // Closed:
+        CLAW_CLOSED_POSITION(1.0),
+
+        // Open:
+        CLAW_OPEN_POSITION(0.0);
+
+        // Fields:
+        private final double claw_position;
+
+        // Constructor:
+        Positions(double claw_position) {
+            this.claw_position = claw_position;
+        }
+    }
 
     // Constructor:
     public Intake(HardwareMap hardware_map) {
         // Variables (Definition):
         horizontal_slide_right = hardware_map.get(DcMotor.class, "horizontal-slide-right");
         horizontal_slide_left = hardware_map.get(DcMotor.class, "horizontal-slide-left");
+
+        intake_claw = hardware_map.get(Servo.class, "intake-claw");
 
         // Initialization:
         horizontal_slide_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -62,12 +87,32 @@ public class Intake implements Subsystem {
         horizontal_slide_left.setPower(linear_slide_power);
     }
 
+    /**
+     * Adjusts the claw position to the desired position.
+     *
+     * @param claw_position The position you would like the claw to be set to.
+     */
+    private void adjust_claw(double claw_position) {
+        intake_claw.setPosition(claw_position);
+    }
+
     @Override
     public void update(Channel channel) {
         // Power:
         power = clamp(-1.0, (power + (-channel.gamepad_one_left_stick_x) * conversion), 1.0);
 
         // Logic:
+        // Slides:
         synchronized_power(power);
+
+
+        // Claw:
+        if (channel.gamepad_two_right_bumper) {
+            claw_position = Positions.CLAW_CLOSED_POSITION;
+        } else if (channel.gamepad_two_left_bumper) {
+            claw_position = Positions.CLAW_OPEN_POSITION;
+        }
+
+        adjust_claw(claw_position.claw_position);
     }
 }

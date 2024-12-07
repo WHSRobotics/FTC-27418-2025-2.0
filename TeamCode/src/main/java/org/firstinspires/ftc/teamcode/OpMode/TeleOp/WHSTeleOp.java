@@ -25,6 +25,9 @@ public class WHSTeleOp extends OpModeEx  {
     public void record_telemetry(Channel channel) {
         // Telemetry:
         // Gamepad (One):
+        telemetryPro.addData("gamepad-one-right-bumper", channel.gamepad_one_right_bumper);
+        telemetryPro.addData("gamepad-one-left-bumper", channel.gamepad_one_left_bumper);
+
         telemetryPro.addData("gamepad-one-left-stick-x", channel.gamepad_one_left_stick_x);
         telemetryPro.addData("gamepad-one-left-stick-y", channel.gamepad_one_left_stick_y);
 
@@ -34,6 +37,9 @@ public class WHSTeleOp extends OpModeEx  {
         telemetryPro.addData("gamepad-one-options", channel.gamepad_one_options);
 
         // Gamepad (Two):
+        telemetryPro.addData("gamepad-two-right-bumper", channel.gamepad_two_right_bumper);
+        telemetryPro.addData("gamepad-two-left-bumper", channel.gamepad_two_left_bumper);
+
         telemetryPro.addData("gamepad-two-left-stick-x", channel.gamepad_two_left_stick_x);
         telemetryPro.addData("gamepad-two-left-stick-y", channel.gamepad_one_left_stick_y);
 

@@ -10,6 +10,9 @@ import org.firstinspires.ftc.teamcode.Extensions.GamepadEx.GamepadEx;
 public class Channel {
     // Variables (Declaration):
     // Gamepad (One):
+    public boolean gamepad_one_right_bumper;
+    public boolean gamepad_one_left_bumper;
+
     public double gamepad_one_left_stick_x;
     public double gamepad_one_left_stick_y;
 
@@ -19,6 +22,9 @@ public class Channel {
     public boolean gamepad_one_options;
 
     // Gamepad (Two):
+    public boolean gamepad_two_right_bumper;
+    public boolean gamepad_two_left_bumper;
+
     public double gamepad_two_left_stick_x;
     public double gamepad_two_left_stick_y;
 
@@ -33,6 +39,9 @@ public class Channel {
     // Constructor:
     public Channel(GamepadEx gamepad_one, GamepadEx gamepad_two) {
         // Gamepad (One):
+        this.gamepad_one_right_bumper = gamepad_one.BUMPER_RIGHT.value();
+        this.gamepad_one_left_bumper = gamepad_one.BUMPER_LEFT.value();
+
         this.gamepad_one_left_stick_x = gamepad_one.LEFT_STICK_X.value();
         this.gamepad_one_left_stick_y = gamepad_one.LEFT_STICK_Y.value();
 
@@ -42,6 +51,9 @@ public class Channel {
         this.gamepad_one_options = gamepad_one.SELECT.value();
 
         // Gamepad (Two):
+        this.gamepad_two_right_bumper = gamepad_two.BUMPER_RIGHT.value();
+        this.gamepad_two_left_bumper = gamepad_two.BUMPER_LEFT.value();
+
         this.gamepad_two_left_stick_x = gamepad_two.LEFT_STICK_X.value();
         this.gamepad_two_left_stick_y = gamepad_two.LEFT_STICK_Y.value();
 
@@ -62,6 +74,9 @@ public class Channel {
 
     public void update(GamepadEx gamepad_one, GamepadEx gamepad_two) {
         // Gamepad (One):
+        this.gamepad_one_right_bumper = gamepad_one.BUMPER_RIGHT.value();
+        this.gamepad_one_left_bumper = gamepad_one.BUMPER_LEFT.value();
+
         this.gamepad_one_left_stick_x = gamepad_one.LEFT_STICK_X.value();
         this.gamepad_one_left_stick_y = gamepad_one.LEFT_STICK_Y.value();
 
@@ -71,6 +86,9 @@ public class Channel {
         this.gamepad_one_options = gamepad_one.SELECT.value();
 
         // Gamepad (Two):
+        this.gamepad_two_right_bumper = gamepad_two.BUMPER_RIGHT.value();
+        this.gamepad_two_left_bumper = gamepad_two.BUMPER_LEFT.value();
+
         this.gamepad_two_left_stick_x = gamepad_two.LEFT_STICK_X.value();
         this.gamepad_two_left_stick_y = gamepad_two.LEFT_STICK_Y.value();
 
