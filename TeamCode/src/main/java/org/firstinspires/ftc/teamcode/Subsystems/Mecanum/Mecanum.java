@@ -45,7 +45,7 @@ public class Mecanum implements Subsystem {
             // Parameters:
             new RevHubOrientationOnRobot(
                 // Logo:
-                RevHubOrientationOnRobot.LogoFacingDirection.DOWN,
+                RevHubOrientationOnRobot.LogoFacingDirection.UP,
 
                 // USB:
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
