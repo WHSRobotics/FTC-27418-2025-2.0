@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Extensions.GamepadEx.Button;
 import org.firstinspires.ftc.teamcode.Extensions.GamepadEx.GamepadEx;
 import org.firstinspires.ftc.teamcode.Extensions.TelemetryPro.AutoSetupTesting.TestManager;
 import org.firstinspires.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
-import org.whitneyrobotics.ftc.teamcode.Tests.Test;
+import org.firstinspires.ftc.teamcode.Tests.Test;
 
 import java.util.ArrayList;
 

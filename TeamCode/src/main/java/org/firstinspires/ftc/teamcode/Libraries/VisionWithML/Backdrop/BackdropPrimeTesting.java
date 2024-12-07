@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Libraries.VisionWithML.Backdrop;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
+import org.firstinspires.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
 
 @TeleOp (name = "2.12.2024 Backdrop ML Testing Prime")
 public class BackdropPrimeTesting extends OpModeEx {

@@ -154,6 +154,16 @@ public class Mecanum implements Subsystem {
         ) / denominator;
 
         // Logic:
+        if (channel.gamepad_one_left_bumper) {
+            front_right.setPower(front_right_power / 3);
+            front_left.setPower(front_left_power / 3);
+
+            back_right.setPower(back_right_power / 3);
+            back_left.setPower(back_left_power / 3);
+
+            return;
+        }
+
         front_right.setPower(front_right_power);
         front_left.setPower(front_left_power);
 
