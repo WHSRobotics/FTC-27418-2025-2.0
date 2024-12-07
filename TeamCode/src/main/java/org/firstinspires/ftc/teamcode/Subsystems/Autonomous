@@ -1,0 +1,17 @@
+// Created by Anik Koirala & Christopher Gholmieh 
+
+// Packages:
+package org.firstinspires.ftc.teamcode.OpMode.Autonomous;
+
+//Imports:
+import org.firstinspires.ftc.teamcode.Extensions.OpModeEx.OpMode;
+
+public class Autnomous extends OpModeEx {
+  @Override 
+  public void initInternal() {
+
+  }
+  @Override
+  protected void loopInternal() {}
+
+}
