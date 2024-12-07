@@ -15,7 +15,7 @@ public class Odometry {
     private static Odometry singleton_instance;
 
     // Variables (Assignment):
-    private final double TICKS_PER_REVOLUTION = 435;
+    private final double TICKS_PER_REVOLUTION = 19512;
     private final double WHEEL_DIAMETER = 4.09;
 
     private final double TICKS_PER_INCH = (
