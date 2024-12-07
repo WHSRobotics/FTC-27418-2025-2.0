@@ -1,0 +1,39 @@
+// Created by Anik Koirala 
+
+// Packages
+package org.whitneyrobotics.ftc.teamcode.OpMode.TeleOp;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+-
+import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
+
+@TeleOp(name = "intake_outtake")
+public class intake_outtake extends OpModeEx {
+    // Declaring Variables for Vertical and Horizontal Slides
+    DcMotor leftVerticalLinearSlides;
+    DcMotor rightVerticalLinearSlides;
+    DcMotor leftHorizontalLinearSlides;
+    DcMotor rightHorizontalLinearSlides;
+
+
+
+        @Override
+        public void initInternal() {
+            // Hardware Map
+            leftVerticalLinearSlides = hardwareMap.get(DcMotor.class, "left vertical linear slides");
+            rightVerticalLinearSlides = hardwareMap.get(DcMotor.class, "right vertical linear slides");
+            leftHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "left horizontal linear slides");
+            rightHorizontalLinearSlides = hardwareMap.get(DcMotor.class, "right horizontal linear slides");
+        }
+
+        @Override
+        protected void loopInternal() {
+            // Setting the power for each linear slides, both vertical and horizontal.
+                leftVerticalLinearSlides.setPower(-gamepad2.LEFT_STICK_Y.value());
+                rightVerticalLinearSlides.setPower(-gamepad2.LEFT_STICK_Y.value());
+                leftHorizontalLinearSlides.setPower(-gamepad2.RIGHT_STICK_X.value());
+                rightHorizontalLinearSlides.setPower(-gamepad2.RIGHT_STICK_X.value());
+
+                        }
+        } 
