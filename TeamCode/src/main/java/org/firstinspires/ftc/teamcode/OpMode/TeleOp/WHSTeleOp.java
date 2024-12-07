@@ -19,6 +19,7 @@ public class WHSTeleOp extends OpModeEx  {
 
     // Methods:
     /**
+     * @brief Records the appropriate telemetry fields from the channel class.
      * 
      * @param channel The channel class that contains the data that will be recorded.
      */
