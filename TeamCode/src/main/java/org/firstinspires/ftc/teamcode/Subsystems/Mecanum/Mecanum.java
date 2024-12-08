@@ -1,4 +1,4 @@
-// Written by: Bo-Yun Hsu
+// Written by: Bo-Yun Hsu (Anik Koirala reviewed and verified the Mecanum subsystem)
 // Package:
 package org.firstinspires.ftc.teamcode.Subsystems.Mecanum;
 
